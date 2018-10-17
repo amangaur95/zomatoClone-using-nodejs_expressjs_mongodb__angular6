@@ -1,0 +1,23 @@
+.uppercontainer{
+    background-image: url('/assets/img/o-RESTAURANT-facebook.jpg');
+}
+#productbusiness{
+    text-decoration: none;
+    float:right;
+    margin:20px 80px;
+    color:red;
+}
+.register{
+    margin-left: 20px;
+}
+.login{
+    margin-left: 60px;
+}
+.card{
+    padding: 10px;    
+}
+.card a{
+    text-decoration: none;
+    color:black;
+    font-weight: bold; 
+}

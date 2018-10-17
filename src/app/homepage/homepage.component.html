@@ -1,0 +1,54 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Restaurant Name</td>
+            <td>Restaurant City</td>
+            <td>Owner/Manager</td>
+            <td>Owner Phone Number</td>
+            <td>Owner Email ID</td>
+            <td>Restaurant Phone Number</td>
+            <td>Opening Status</td>
+            <td>Address</td>
+            <td>Alcohol</td>
+            <td>Services</td>
+            <td>Seating</td>
+            <td>Indoor/Outdoor</td>
+            <td>Payment</td>
+            <td>Cuisines</td>
+            <td>Tags</td>
+            <td>Week Day</td>
+            <td>Opening Time</td>
+            <td>Closing Time</td>
+            <td>Restaurant Email</td>
+            <td>Restaurant Website</td>
+            <td>Restaurant Image</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let restaurant of restaurants">
+            <td>{{ restaurant.restaurant_name }}</td>
+            <td>{{ restaurant.city }}</td>
+            <td>{{ restaurant.owner_ornot }}</td>
+            <td>{{ restaurant.owner_phone }}</td>
+            <td>{{ restaurant.owner_email }}</td>
+            <td>{{ restaurant.phone_number }}</td>
+            <td>{{ restaurant.status_val }}</td>
+            <td>{{ restaurant.address }}</td>
+            <td>{{ restaurant.serve_value }}</td>
+            <td>{{ restaurant.service_value }}</td>
+            <td>{{ restaurant.seating_value }}</td>
+            <td>{{ restaurant.selectedCategories }}</td>
+            <td>{{ restaurant.payment }}</td>
+            <td>{{restaurant.cuisines.cuisine_name }}</td>            
+            <td>{{ restaurant.tags.tag }}</td>
+            <td>{{ restaurant.weekDay }}</td>
+            <td>{{ restaurant.startTime.time }}</td>
+            <td>{{ restaurant.endTime.time }}</td>
+            <td>{{ restaurant.restaurant_email }}</td>
+            <td>{{ restaurant.restaurant_website }}</td>
+            <td><img width="100px" src="{{ restaurant.images }}" alt=""></td>
+        </tr>
+    </tbody>
+</table>
+
+<p-paginator [rows]="perPageRecords" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>

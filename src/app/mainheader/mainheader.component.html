@@ -1,0 +1,31 @@
+<div class="container-fluid uppercontainer">
+    <div class="row">
+        <a id="productbusiness" routerLink="/productbusiness">Products for Businesses</a>
+    </div><!--end of row-->
+      <!-- <div class="row">
+        <div class="col-xs-3 col-xs-offset-9 log_reg">
+          <button class="btn btn-success login" routerLink="/login">Login</button>
+          <button class="btn btn-primary register" routerLink="/register">Create an account</button>
+        </div>
+      </div> -->
+    <div class="row">
+      <div class="col-md-12 logo_img">
+        <img src="assets/img/rest.png" width="170px" height="170px" class="img-responsive center-block">
+      </div><!--end of col-md-12-->
+    </div><!--end of row-->
+    <div class="row">
+      <div class="col-md-12 col-md-offset-3" >
+        <h3>Order food online from the best restaurants in Mumbai</h3>
+        <p id="enter_location">Enter your delivery location to get started</p>
+      </div><!--end of col-md-12-->
+    </div><!--end of row-->
+    <div class="row">
+      <div class="col-md-12 col-md-offset-4">
+        <form class="form-inline ml-auto">
+          <input class="form-control mr-sm-2" type="text" [(ngModel)]="searchLocation" [ngModelOptions]="{standalone: true}" placeholder="Type Your City or Locality Here...">
+          <!-- <button class="btn btn-danger my-2 my-sm-0" type="submit" routerLink="/orderfoodonline">Find Food</button> -->
+          <button class="btn btn-danger my-2 my-sm-0" (click)="matchLocation(searchLocation)">Find Food</button>
+        </form>
+      </div><!--end of col-md-12-->
+    </div>   
+  </div><!--end of container-fluid-->

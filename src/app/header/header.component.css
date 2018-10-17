@@ -1,0 +1,17 @@
+
+#cart{
+    margin-top: 10px;
+}
+#create{
+    margin-top: 7px;
+}
+.glyphicon-shopping-cart{
+    margin-top: 15px;
+    color:  rgb(0,100,200);
+}
+#order_food{
+    color:  rgb(0,100,200);
+}
+#book_table{
+    color:  rgb(0,100,200);
+}

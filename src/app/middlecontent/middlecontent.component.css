@@ -1,0 +1,50 @@
+
+/* .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+} */
+#tagline{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color:brown
+}
+/* #search_btn{
+  margin-left:600px
+} */
+/* #search{
+    margin-left:500px
+} */
+.box{
+    border:2px solid #dfdfdf;
+}
+#images_row{
+    border: 1px solid #dfdfdf;
+}
+ul li{
+    list-style: none;
+}
+#place_list{
+    border: 1px solid #dfdfdf;
+}
+.u1{
+    border:1px solid #dfdfdf;
+}
+.qw{
+    padding-left:50px
+}
+.box{
+    padding: 20px;
+}
+.card{
+    padding: 10px;    
+}
+.card a{
+    text-decoration: none;
+    color:black;
+    font-weight: bold; 
+}
+.search_bar{
+    padding-left:400px
+}

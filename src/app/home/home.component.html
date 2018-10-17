@@ -1,0 +1,15 @@
+  <app-mainheader></app-mainheader>
+  <div class="container">
+    <h2>Popular locations in India</h2>
+    <p id="tag_line">From swanky upscale restaurants to the cosiest hidden gems serving the most incredible food, Zomato covers it all. Explore menus, and millions of restaurant photos and reviews from users just like you, to find your next great meal. </p>
+    <div class="col-md-12">
+    <div class="col-md-4" *ngFor="let city of cities">
+      <p-card class="card" [style]="{width: '360px'}">
+        <a [routerLink]="['/citylocality',city._id]">{{city._id}} Restaurants</a>
+      </p-card>
+    </div>
+  </div>
+  <p-paginator [rows]="perPageRecords" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+  </div>
+  
+  <app-footer></app-footer>

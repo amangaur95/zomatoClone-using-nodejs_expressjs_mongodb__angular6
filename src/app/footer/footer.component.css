@@ -1,0 +1,24 @@
+ul li{
+    list-style: none;
+    color: white;
+}
+#orderbook_trace{
+    margin-top: 50px
+}
+#language{
+    float: right;
+    margin:25px 20px 0 0
+}
+.container-fluid{
+    background-color:rgb(30, 30, 48);
+}
+.container-fluid p{
+    color: white;
+}
+h3{
+    color:white;
+}
+#privacy_terms li{
+    display: inline-block;
+    padding: 20px
+}

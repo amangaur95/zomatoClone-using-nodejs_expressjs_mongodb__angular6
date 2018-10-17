@@ -1,0 +1,146 @@
+<div class="container-fluid">
+  <div class="row head">
+    <div class="col-md-12">
+      <h2>Food Style</h2>
+    </div>
+  </div>
+  <!--endof row-->
+  <div class="row head1">
+    <div class="col-md-12">
+      <ul class="nav navbar-nav navbar-right">
+        <li><img src="assets/img/table.jpeg" width="45" height="45"></li>
+        <li><a href="#" id="book_table">Book a Table</a></li>
+        <!-- <li><img src="assets/img/cart.jpeg" id="cart" width="50" height="30"></li> -->
+        <li><a href="#" id="order_food">Order Food</a></li>
+        <li><a href=""><span class="glyphicon glyphicon-shopping-cart"></span>  Items</a></li>
+      </ul>
+    </div>
+    <!--end of col-md-12-->
+  </div>
+  <!--end of row-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Restaurants in {{locality}}</h3>
+      </div>
+      <!--end of col-md-12-->
+    </div>
+    <!--end of row-->
+    <div class="row">
+      <div class="col-md-3">
+        <div class="side_box">
+          <p id="quick_filter">Quick Filter</p>
+          <!-- <app-filtercheckbox></app-filtercheckbox> -->
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">
+              <span>Promotions</span>
+            </label>
+          </div>
+          <!--end of checkbox class-->
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">
+              <span>Pure Veg</span>
+            </label>
+          </div>
+          <!--end of checkbox class-->
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">
+              <span>Free Delivery</span>
+            </label>
+          </div>
+          <!--end of checkbox class-->
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">
+              <span>Online Payment</span>
+            </label>
+          </div>
+          <!--end of checkbox class-->
+          <div class="sort_by">
+            <p id="sort_by">Sort by</p>
+            <p>Popularity<span>-high to low</span></p>
+            <p>Delivery Rating<span>-high to low</span></p>
+            <p>Rating<span>-high to low</span></p>
+            <p>Recently Added<span>-new to old</span></p>
+          </div>
+          <!--end of sortby-->
+          <div class="cuisine">
+            <p>Desserts</p>
+            <p>Fast Food</p>
+            <p>North Indian</p>
+            <p>Chinese</p>
+            <p>Beverages</p>
+            <p>Italian</p>
+            <p>Continental</p>
+            <p>Cafe</p>
+            <p>Burger</p>
+            <p>Pizza</p>
+            <!-- <p><span><button (click)="popup()">See all cuisines</button></span></p> -->
+            <p><span><a href="javascript:void(0)" (click)="getCuisine()">See all cuisines</a></span></p>
+          </div>
+          <!--end of cuisine-->
+          <div class="delivery_time">
+            <p id="delivery_time">Delivery Time</p>
+            <p>Up to 30 minutes</p>
+            <p>Up to 45 minutes</p>
+            <p>Up to 60 minutes</p>
+          </div>
+          <!--end of delivery_time-->
+          <div class="cost_fortwo">
+            <p id="cost_fortwo">Cost for two</p>
+            <p>Less than 250Rs</p>
+            <p>250Rs to 500Rs</p>
+            <p>500Rs to 1000Rs</p>
+            <p>1000Rs to 1500Rs</p>
+            <p>1500Rs to 2500Rs</p>
+            <p>2500Rs+</p>
+          </div>
+          <!--end of delivery_time-->
+          <div class="minimum_order">
+            <p id="minimum_order">Minimum Order</p>
+            <p>No minimum order</p>
+            <p>Up to 150Rs</p>
+            <p>Up to 250Rs</p>
+            <p>Up to 500Rs</p>
+          </div>
+          <!--end of minimum_order-->
+        </div>
+        <!--end of side_box-->
+      </div>
+      <!--end of col-md-3-->
+      <div class="col-md-9 border">
+        <div class="col-md-4" *ngFor="let locality_restaurant of locality_restaurants">
+            <p-card class="card" [style]="{width: '250px', height:'350px'}" >
+              <img src="{{ locality_restaurant.images }}" alt="" width='230px' height='150px' class="img-rounded">
+                <p>{{ locality_restaurant.restaurant_name }}</p>
+                <p>{{ locality_restaurant.city }}</p>
+                <p>{{ locality_restaurant.locality }}</p>
+                <p>{{ locality_restaurant.address}}</p>
+                <p>{{ locality_restaurant.serve_value }}</p>
+                <p>{{ locality_restaurant.cuisines.cuisine_name }}</p>
+                <p>{{ locality_restaurant.tags.tag }}</p>
+                <p>{{ locality_restaurant.payment }}</p>
+                <button class="form-control orderfood" [routerLink]="['/foodlist',locality_restaurant._id]">OrderFood</button>
+            </p-card>
+        </div>
+      </div>
+      <!--end of col-md-9-->
+    </div>
+    <!--end of row-->
+  </div>
+  <!--end of container-->
+</div>
+<!--end of container-fluid-->
+
+
+<p-dialog [modal]="true" [baseZIndex]="10000" [contentStyle]="{'overflow':'auto','height':'auto'}" header="Select a cuisine" [width]="600"
+  dismissableMask="true" position="center" [responsive]="true" [maximizable]="true" [(visible)]="cuisineviewDialoge">
+ 
+  <app-cuisinelist #CuisinelistComponent></app-cuisinelist>
+
+</p-dialog>
+
+<!-- <span style="padding:10px;"></span> -->

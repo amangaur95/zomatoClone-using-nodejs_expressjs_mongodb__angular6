@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-4" *ngFor="let newrestaurantlist of newrestaurantlists">
+        <p>{{ newrestaurantlist.restaurant_name }}</p>
+        <p>{{ newrestaurantlist.owner_ornot }}</p>
+        <p>{{ newrestaurantlist.owner_phone }}</p>
+        <p>{{ newrestaurantlist.owner_email }}</p>
+        <p>{{ newrestaurantlist.phone_number }}</p>
+        <p>{{ newrestaurantlist.status_val }}</p>
+        <p>{{ newrestaurantlist.address }}</p>
+        <p>{{ newrestaurantlist.serve_value }}</p>
+        <p>{{ newrestaurantlist.service_value }}</p>
+        <p>{{ newrestaurantlist.seating_value }}</p>
+        <p>{{ newrestaurantlist.selectedCategories }}</p>
+        <p>{{ newrestaurantlist.payment }}</p>
+        <p>{{ newrestaurantlist.cuisines.cuisine_name }}</p>
+        <p>{{ newrestaurantlist.tags.tag_name }}</p>
+        <p>{{ newrestaurantlist.weekDay }}</p>
+        <p>{{ newrestaurantlist.restaurant_email }}</p>
+        <p>{{ newrestaurantlist.restaurant_websites }}</p>
+        <p>{{ newrestaurantlist.city }}</p>
+        <p>{{ newrestaurantlist.restaurant_locality }}</p>
+        <p>{{ newrestaurantlist.startTime.time }}</p>
+        <p>{{ newrestaurantlist.endTime.time }}</p>
+        <!-- <p>{{ newrestaurantlist._id }} </p> -->
+        <!-- <button class="btn btn-info">View Menu</button> -->
+        <button class="btn btn-info" [routerLink]="['/viewmenupage',newrestaurantlist._id]">ViewMenu</button>
+      </div>
+    </div>
+  </div>
+</div>

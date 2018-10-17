@@ -1,0 +1,247 @@
+<div class="container-fluid">
+  <div class="container">
+    <h2>Add a Restaurant</h2>
+    <h3>Basic</h3>
+    <div class="box">
+
+        <!-- <p-fileUpload name="images" url="http://localhost:4000/user/fileUpload" (onUpload)="onUpload($event)"
+                multiple="multiple" accept="image/*" maxFileSize="1000000">
+            <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+        </p-fileUpload> -->
+        <!-- <img> -->
+        
+      <form [formGroup]="angForm" novalidate (submit)="addrestaurant()">
+        <div class="form-group">
+          <label>RESTAURANT NAME<span>*</span></label>
+          <input type="text" class="form-control" name="restaurant_name" 
+          formControlName="restaurant_name" #restaurant_name/>
+        </div>
+        <div *ngIf="angForm.controls['restaurant_name'].invalid && (angForm.controls['restaurant_name']
+        .dirty || angForm.controls['restaurant_name'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['restaurant_name'].errors.required">
+            RESTAURANT NAME is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>UPLOAD RESTAURANT IMAGE</label>
+          <input type="file" (change)="onFileChange($event)" />
+          <!-- <input type="file" multiple (change)="onFileChanged($event)"  class="form-control" #restaurant_images/> -->
+        </div>
+        <div class="form-group">
+          <label>CITY<span>*</span></label>
+          <input type="text" class="form-control" name="city" formControlName="city" #city/>
+        </div>
+        <div *ngIf="angForm.controls['city'].invalid && (angForm.controls['city']
+        .dirty || angForm.controls['city'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['city'].errors.required">
+            PLEASE ENTER CITY NAME.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Locality<span>*</span></label>
+          <input type="text" class="form-control" name="restaurant_locality" 
+            formControlName="restaurant_locality" #restaurant_locality/>
+          </div>
+          <div *ngIf="angForm.controls['restaurant_locality'].invalid && (angForm.controls['restaurant_locality']
+          .dirty || angForm.controls['restaurant_locality'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['restaurant_locality'].errors.required">
+            You have to specify your restaurant locality
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Are you the owner or manager of this place?<span>*</span></label>
+        </div>
+        <div class="ui-g" style="width:250px;margin-bottom:10px">
+          <div class="ui-g-12">
+            <p-radioButton name="not_owner" value="I m not the owner or a manager" label="I'm not the owner/manager" 
+              [(ngModel)]="owner_ornot" inputId="preopt1" formControlName="owner_ornot">
+            </p-radioButton>
+          </div>
+          <div class="ui-g-12">
+            <p-radioButton name="owner" value="I m the owner or a manager" label="I'm the owner/manager"
+              [(ngModel)]="owner_ornot" inputId="preopt2" formControlName="owner_ornot">
+            </p-radioButton>
+          </div>
+        </div>
+        <div *ngIf="owner_ornot == 'I m the owner or a manager' ">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>OWNER PHONE<span>*</span></label>
+                <p-inputMask mask="(999) 999-9999" name="owner_phone" formControlName="owner_phone" 
+                placeholder="(999) 999-9999"></p-inputMask>
+              </div>
+              <div></div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>OWNER EMAIL</label>
+                <input type="email" class="form-control" name="owner_email" formControlName="owner_email" #owner_email/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>PHONE NUMBER</label>
+          <p-inputMask mask="(999) 999-9999" name="phone_number" formControlName="phone_number" placeholder="(999) 999-9999"></p-inputMask>
+        </div>
+        <div class="form-group">
+          <label>OPENING STATUS</label>
+        </div>
+        <div class="ui-g" style="width:250px;margin-bottom:10px">
+          <div class="ui-g-12">
+            <p-radioButton name="already_open" value="This place is already open" label="This place is already open"  [(ngModel)]="status_val" inputId="already_open" formControlName="status_val"></p-radioButton>
+          </div>
+          <div class="ui-g-12">
+            <p-radioButton name="open_soon" value="This place is opening soon" label="This place is opening soon"  [(ngModel)]="status_val" inputId="open_soon" formControlName="status_val"></p-radioButton>
+          </div>
+        </div>
+        <div class="form-group">
+          <p-accordion>
+            <p-accordionTab header="Add more info (optional)" [selected]="false">
+              <div class="row">
+                <div class="col-md-12">
+                  Location
+                </div>
+              </div>  
+              <div class="form-group">
+                <label>ADDRESS/LANDMARK</label>
+                <input type="text" class="form-control" name="address" formControlName="address" #address/>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  Characteristics
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Alcohol</label>
+              </div>
+              <div class="ui-g" style="width:250px;margin-bottom:10px">
+                <div class="ui-g-12">
+                  <p-radioButton name="serve_alcohol" value="Serves Alcohol" label="Serves Alcohol"  [(ngModel)]="serve_value" inputId="serve_alcohol" formControlName="serve_value"></p-radioButton>
+                </div>
+                <div class="ui-g-12">
+                  <p-radioButton name="not_servealcohol" value="Does not serve alcohol" label="Doesn't serve alcohol"  [(ngModel)]="serve_value" inputId="not_servealcohol" formControlName="serve_value"></p-radioButton>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Services</label>
+              </div>
+              <div class="ui-g" style="width:250px;margin-bottom:10px">
+                <div class="ui-g-12">
+                  <p-checkbox name="breakfast" value="Breakfast" label="Breakfast"  [(ngModel)]="service_value" inputId="breakfast" formControlName="service_value"></p-checkbox>
+                </div>
+                <div class="ui-g-12">
+                  <p-checkbox name="lunch" value="Lunch" label="Lunch"  [(ngModel)]="service_value" inputId="lunch" formControlName="service_value"></p-checkbox>
+                </div>
+                <div class="ui-g-12">
+                  <p-checkbox name="Dinner" value="dinner" label="Dinner"  [(ngModel)]="service_value" inputId="dinner" formControlName="service_value"></p-checkbox>
+                </div>
+                <div class="ui-g-12">
+                  <p-checkbox name="Cafe" value="cafe" label="Cafe"  [(ngModel)]="service_value" inputId="cafe" formControlName="service_value"></p-checkbox>
+                </div>
+                <div class="ui-g-12">
+                  <p-checkbox name="Nightlife" value="Nightlife" label="Nightlife"  [(ngModel)]="service_value" inputId="nightlife" formControlName="service_value"></p-checkbox>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Seating</label>
+              </div>
+              <div class="ui-g" style="width:250px;margin-bottom:10px">
+                <div class="ui-g-12">
+                  <p-radioButton name="seating_available" value="Seating Available" label="Seating Available"  [(ngModel)]="seating_value" inputId="seating_available" formControlName="seating_value"></p-radioButton>
+                </div>
+                <div class="ui-g-12">
+                  <p-radioButton name="seating_notavailable" value="No Seating Available" label="No Seating Available"  [(ngModel)]="seating_value" inputId="seating_notavailable" formControlName="seating_value"></p-radioButton>
+                </div>
+              </div>
+              <div *ngIf="seating_value==='Seating Available'">
+                <div class="ui-g" style="width:250px;margin-bottom:10px">
+                  <div class="ui-g-12">
+                    <p-checkbox name="indoor" value="Indoor" label="Indoor" [(ngModel)]="selectedCategories" inputId="indoor" formControlName="selectedCategories"></p-checkbox>
+                  </div>
+                  <div class="ui-g-12">
+                    <p-checkbox name="outdoor" value="Outdoor" label="Outdoor" [(ngModel)]="selectedCategories" inputId="outdoor" formControlName="selectedCategories"></p-checkbox>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Payment</label>
+              </div>
+              <div class="ui-g" style="width:250px;margin-bottom:10px">
+                <div class="ui-g-12">
+                  <p-radioButton name="card_cash" value="Cards and Cash" label="Cards and Cash"  
+                    [(ngModel)]="payment" inputId="card_cash" formControlName="payment">
+                  </p-radioButton>
+                </div>
+                <div class="ui-g-12">
+                  <p-radioButton name="cash_only" value="Cash Only" label="Cash Only"  [(ngModel)]="payment" inputId="cash_only" formControlName="payment"></p-radioButton>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Cuisines</label>
+              </div>
+              <p-dropdown [options]="cuisines" [(ngModel)]="selectedCuisine" placeholder="Select a Cuisine" 
+                optionLabel="cuisine_name" [showClear]="true" formControlName="cuisines">
+              </p-dropdown>
+              <div class="form-group">
+                <label>Tags</label>
+              </div>
+              <p-dropdown [options]="tag" [(ngModel)]="selectedTag" placeholder="Select Tags" 
+                optionLabel="tag_name" [showClear]="true" formControlName="tags">
+              </p-dropdown>
+              <div class="form-group">
+                <label>Timings</label>
+              </div>
+              <div class="ui-g" style="width:250px;margin-bottom:10px">
+                <div class="ui-g-12">
+                  <p-checkbox name="monday" value="Monday" label="Monday" [(ngModel)]="weekDay" inputId="monday" formControlName="weekDay"></p-checkbox>
+                </div>
+                <div class="ui-g-12">
+                  <p-checkbox name="tuesday" value="Tuesday" label="Tuesday" [(ngModel)]="weekDay" inputId="tuesday" formControlName="weekDay"></p-checkbox>
+                </div>
+                <div class="ui-g-12">
+                  <p-checkbox name="wednesday" value="Wednesday" label="Wednesday" [(ngModel)]="weekDay" inputId="wednesday" formControlName="weekDay"></p-checkbox>
+                </div>
+                <div class="ui-g-12">
+                  <p-checkbox name="thursday" value="Thursday" label="Thursday" [(ngModel)]="weekDay" inputId="thursday" formControlName="weekDay"></p-checkbox>
+                </div>
+                <div class="ui-g-12">
+                  <p-checkbox name="friday" value="Friday" label="Friday" [(ngModel)]="weekDay" inputId="friday" formControlName="weekDay"></p-checkbox>
+                </div>
+                <div class="ui-g-12">
+                  <p-checkbox name="saturday" value="Saturday" label="Saturday" [(ngModel)]="weekDay" inputId="saturday" formControlName="weekDay"></p-checkbox>
+                </div>
+                <div class="ui-g-12">
+                  <p-checkbox name="sunday" value="Sunday" label="Sunday" [(ngModel)]="weekDay" inputId="sunday" formControlName="weekDay"></p-checkbox>
+                </div>
+              </div>
+              <p-dropdown [options]="timings" [(ngModel)]="startTime" placeholder="Start time" optionLabel="time" [showClear]="true" formControlName="startTime"></p-dropdown>
+              <p-dropdown [options]="timings" [(ngModel)]="endTime" placeholder="End time" optionLabel="time" [showClear]="true" formControlName="endTime"></p-dropdown>
+              <div class="form-group">
+                <label>Contact Information</label>
+              </div>
+              <div class="form-group">
+                <label>Restaurant Email</label>
+                <input type="email" class="form-control" name="restaurant_email" formControlName="restaurant_email" #restaurant_email/>
+              </div>
+              <div class="form-group">
+                <label>Restaurant Website</label>
+                <input type="text" class="form-control" name="restaurant_website" formControlName="restaurant_website" #restaurant_website/>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" [disabled]="angForm.pristine || angForm.invalid">Add Restaurant</button>
+        </div> 
+      </form>
+    </div><!--end of box-->
+  </div><!--end of container-->
+</div><!--end of container-fluid-->
+
+

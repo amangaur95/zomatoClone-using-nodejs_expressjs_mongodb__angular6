@@ -1,0 +1,43 @@
+.uppercontainer{
+    background-image: url('/assets/img/o-RESTAURANT-facebook.jpg');
+}
+#productbusiness{
+    text-decoration: none;
+    float:right;
+    margin:20px 80px;
+    color:red;
+}
+.register{
+    margin-left: 20px;
+}
+.login{
+    margin-left: 60px;
+}
+
+.logo_img{
+    margin-top:25px
+}
+.login_register{
+    margin-top:25px;
+}
+#order_onlinetagline{
+    font-weight: bold;
+}
+#order_workstagline{
+    margin-left: 20px;
+}
+.tagline{
+    margin-top: 25px;
+}
+span{
+    font-weight: bold;
+}
+#enter_location{
+    margin-left: 150px;
+    font-weight: bold;   
+}
+.my-2{
+    margin-left: 20px;
+    background: red;
+    color: white
+}

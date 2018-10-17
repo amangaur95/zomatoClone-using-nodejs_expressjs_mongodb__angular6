@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="header common_header">
+        <ul class="nav navbar-nav">
+            <li><a routerLink="">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="!userservice.loggedIn"><a  routerLink="/login">Login</a></li>
+            <li *ngIf="!userservice.loggedIn"><button id="create" routerLink="/register" type="button" class="btn btn-primary" id="create">Create a Account</button></li>
+            <li *ngIf="userservice.loggedIn"><button id="logout_btn" routerLink="/logout" class="btn btn-primary" (click)="logout()" >Logout</button></li>
+        </ul>
+    </div>
+</div>

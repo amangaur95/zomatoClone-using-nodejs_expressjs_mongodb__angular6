@@ -1,0 +1,13 @@
+#create{
+    margin: 7px 20px 0 0;
+}
+#logout_btn{
+    margin: 7px 20px 0 0;
+}
+.container-fluid{
+    background-color:rgb(231, 227, 227)
+}
+ul li a{
+    text-decoration: none;
+    color:green
+}

@@ -1,0 +1,87 @@
+#register{
+    margin-top:10px;
+    margin-left:20px;
+}
+#login{
+    color: white;
+    text-decoration: none;
+}
+.head{
+    background-color: rgb(224, 19, 19);
+}
+.head h2{
+    color:white;
+    margin-left: 60px ;
+}
+
+.cart{
+    color:white
+}
+.head1{
+    background-color: rgba(235, 0, 0, 0.781);
+}
+#order_food{
+    color:white
+}
+#book_table{
+    color:white
+}
+.navbar-right{
+    margin-right: 40px;
+}
+.side_box{
+    border: 1px solid #dfdfdf;
+    padding:20px;
+}
+#sort_by{
+    font-weight: bold
+}
+#quick_filter{
+    font-weight: bold
+}
+.sort_by span{
+    color:grey
+}
+.cuisine span a{ 
+    color: grey;
+    text-decoration: none
+}
+#delivery_time{
+    font-weight: bold
+}
+#order_fortwo{
+    font-weight: bold
+}
+#minimum_order{
+    font-weight: bold
+}
+ul li {
+    list-style: none;  
+}
+/* .img_info{
+    width:50%;
+    float:left;
+} */
+/* .onlinepayment{
+    color:green;
+}
+.onlinepayment:hover{
+background-color: green;
+color:white;
+} */
+.card{
+    padding: 0px 10px;
+}
+.card a{
+    text-decoration: none;
+}
+.border{
+    border: 1px solid black;
+}
+.orderfood{
+    color:green
+}
+.orderfood:hover{
+    background-color: green;
+    color:white;
+}

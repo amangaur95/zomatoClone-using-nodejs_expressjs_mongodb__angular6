@@ -1,0 +1,8 @@
+<form [formGroup]="payform" (submit)="chargeCreditCard()">
+  <input type="text" placeholder="email" name="email" formControlName="email">
+    <input type="text" placeholder="Credit Card #" name="cardNumber" formControlName="cardNumber">
+    <input type="text" placeholder="Expiration Month" name="expMonth" formControlName="expMonth">
+    <input type="text" placeholder="Expiration Year" name="expYear" formControlName="expYear">
+    <input type="text" placeholder="CVC" name="cvc" formControlName="cvc">
+    <button class="btn btn-info">Proceed for payment</button>
+</form>

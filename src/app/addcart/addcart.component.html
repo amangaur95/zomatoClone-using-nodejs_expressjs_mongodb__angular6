@@ -1,0 +1,36 @@
+ <table class="table table-bordered">
+   <thead>
+     <tr>
+       <th>Food Name/Drink</th>
+       <th>Food Price</th>
+       <th>Food Quantity</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let menu of cartitems">
+       <td>{{ menu._id.food_name }}</td>
+       <td>{{ menu._id.food_price }}</td>
+       <td>
+         {{ menu.quantitycount }}
+         <button class="btn btn-success btn-xs plus" (click)="add(menu._id.food_id)"><i class="glyphicon glyphicon-plus"></i></button>
+         <button class="btn btn-danger btn-xs minus" (click)="del(menu._id.food_id)"><i class="glyphicon glyphicon-minus"></i></button>
+       </td>
+     </tr>
+   </tbody>
+   <tfoot>
+    <tr>
+      <td>Total Price</td>
+      <td colspan="6" class="text-right">{{total | currency: 'INR' }}
+        <app-paymentpage payment="{{total}}"></app-paymentpage>
+          <!-- <a routerLink="/pay">Proceed to Pay</a> -->
+      </td>
+    </tr>
+  </tfoot>
+ </table>
+ 
+
+ <!-- <div *ngFor="let menu of cartitems">
+   <div *ngFor="let item of menu.items">
+     {{item|json}}
+   </div>
+ </div> -->

@@ -1,0 +1,20 @@
+<div class="header">
+    <ul>
+        <li><a href="#" id="order_food">Order Food</a></li>
+        <li><a routerLink="/cartitem"><span class="glyphicon glyphicon-shopping-cart"></span>  Items</a><span *ngIf='itemcount'>{{itemcount}}</span></li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-4" *ngFor="let menulist of menulists">
+            <p-card class="card" title="{{menulist.food_services}}"
+            [style]="{width: '360px'}">
+            <div *ngFor="let items of menulist.items">
+                <p>{{items.food_name}}</p>
+                <p>{{items.food_price}}</p>
+                <button class="btn btn-primary" (click)="addCart(items)">Add to cart</button>
+            </div>
+            </p-card>
+        </div>
+    </div>
+</div>

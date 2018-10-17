@@ -1,0 +1,42 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <th>Food Name</th>
+      <th>Food Price</th>
+      <th>Food Desc</th>
+      <th>Action</th>
+    </thead>
+    <tbody *ngFor="let menulist of adminmenulists">
+      <h3>{{menulist.food_services}}</h3>
+      <tr *ngFor="let items of menulist.items">
+        <td>{{ items.food_name }}</td>
+        <td>{{ items.food_price }}</td>
+        <td>{{ items.food_desc }}</td>
+        <td>
+          <button class="btn btn-success" [routerLink]="['/editmenupage',items._id]">Edit Menu</button>
+          <button class="btn btn-danger" (click)="deleteItem(items._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+      <button class="btn btn-info" [routerLink]="['/upload',restro_id]">Add Item</button>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="col-md-4" *ngFor="let menulist of menulists">
+          <p-card class="card" title="{{menulist.food_services}}"
+          [style]="{width: '360px'}">
+          <div *ngFor="let items of menulist.items">
+              <p>{{items.food_name}}</p>
+              <p>{{items.food_price}}</p>
+              <button class="btn btn-primary" (click)="addCart(items)">Add to cart</button>
+          </div>
+          </p-card>
+      </div>
+  </div>
+</div>

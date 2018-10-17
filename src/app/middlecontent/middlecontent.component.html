@@ -1,0 +1,183 @@
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12">
+  <img src="assets/img/rest.png" class="img-responsive center-block">
+</div><!--end of col-md-12-->
+</div><!--end of row-->
+
+<div class="row">
+  <div class="col-md-12">
+  <p id="tagline">Find the best restaurants, cafés and bars in India </p>
+  </div><!--end of col-md-12-->
+</div><!--end of div-->
+
+
+
+  <!-- <input type="text" ng-model="customPopupSelected" placeholder="Custom popup template" uib-typeahead="state as state.name for state in statesWithFlags | filter:{name:$viewValue}" typeahead-popup-template-url="customPopupTemplate.html" class="form-control"> -->
+  <!-- <div class="row">
+    <div class="col-md-4 col-md-offset-4" >
+        <div class="topnav">
+            <input type="text" placeholder="Search Your favourite restaurant..." [(ngModel)]='searchcontent' id="search">
+            <button class="btn btn-danger" (click)='search(searchcontent)' type="submit" id="search_btn">Search</button> -->
+            <!-- <button class="btn btn-danger" routerLink="/search" (click)='search(searchcontent)' type="submit" id="search_btn">Search</button> -->
+          <!-- </div> -->
+          <!--end of topnav-->
+    <!-- </div> -->
+    <!--end of col-md-12-->
+  <!-- </div> -->
+  <!--end of row-->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-6 search_bar">
+              <input type="text" class="form-control" placeholder="Search Your favourite restaurant..." [(ngModel)]='searchcontent' id="search">
+          </div>
+          <div class="col-md-6">
+              <button class="btn btn-danger" (click)='search(searchcontent)' type="submit" id="search_btn">Search</button>
+          </div>
+          
+        </div>
+      </div>
+
+     <div class="row">
+       <div class="col-md-8">
+         <h3> Collections</h3>
+         <p>Explore curated lists of top restaurants, cafes, pubs, and bars in Pune, based on trends</p>
+          <div class="row">
+           <div class="col-md-6 u1">
+             <div class="col-md-3">
+                <img src="assets/img/trendingfood.jpeg" height="100" width="100">
+             </div><!--col-md-3-->
+             <div class="col-md-3 qw">
+                <h4>Trending This Week</h4>
+             </div><!--col-md-3-->
+             
+           </div><!--end of col-md-6-->
+           <div class="col-md-6 u1">
+             <div class="col-md-3">
+                <img src="assets/img/hotel.jpeg"  height="100" width="100">
+             </div><!--end of col-3-->
+            <div class="col-md-3 qw">
+                <h4>Best of city</h4>
+            </div><!--col-md-3-->
+             
+           </div><!--end of col-md-6-->
+          </div><!--end of row-->
+          <div class="row">
+              <div class="col-md-6 u1">
+                  <div class="col-md-3">
+                     <img src="assets/img/openrest.png" height="100" width="100">
+                  </div><!--col-md-3-->
+                  <div class="col-md-3 qw">
+                     <h4>Newly Opened</h4>
+                  </div><!--col-md-3-->
+                  
+                </div><!--end of col-md-6-->
+                <div class="col-md-6 u1">
+                  <div class="col-md-3">
+                     <img src="assets/img/foodplate.jpeg"  height="100" width="100">
+                  </div><!--end of col-3-->
+                 <div class="col-md-3 qw">
+                     <h4>Popular restaurants</h4>
+                 </div><!--col-md-3-->
+                  
+                </div><!--end of col-md-6-->
+          </div><!--end of row-->
+       </div><!--end of col-md-8-->
+       <div class="col-md-4">
+          <h3>Order Food Online</h3>
+          <p>Best restaurants delivering to your doorstep </p>
+          <div class="box">
+              <h4>Enter your delivery location</h4>
+              <form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Type delivery location here..">
+                  </div><!--end of form-group-->
+                  <button type="button" class="btn btn-success form-control" routerLink="/orderfoodpage">Order Food Online!</button>
+                </form>
+                <hr>
+          </div><!--end of box-->
+       </div><!--end of col-md-4-->
+     </div><!--end of row-->        
+  <!-- </div> -->
+ 
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Quick Searches</h3>
+        <p>Discover restaurants by type of meal </p>
+      </div><!--end of col-md-12-->
+    </div><!--end of row-->
+    <div class="row" id="images_row">
+      <div class="col-md-12 col-md-offset-2">
+      <!-- <div class=" col-sm-offset-2"> -->
+        
+        <div class="col-md-1">
+          <img src="assets/img/delivery.png" width="70" height="60">
+        <p>Delivery</p>
+        </div>
+        <div class="col-md-1">
+          <img src="assets/img/pocket.png" width="70" height="60">
+        <p>Pocket-Friendly Delivery</p>
+        </div>
+        <div class="col-md-1">
+          <img src="assets/img/breakfast.png" width="70" height="60">
+        <p>Breakfast</p>
+        </div>
+        <div class="col-md-1">
+          <img src="assets/img/lunch.png" width="70" height="60">
+        <p>Lunch</p>
+        </div>
+        <div class="col-md-1">
+          <img src="assets/img/dinner.png" width="70" height="60">
+        <p>Dinner</p>
+        </div>
+        <div class="col-md-1">
+          <img src="assets/img/drinks.png" width="70" height="60">
+        <p>Drinks & Nightlife</p>
+        </div>
+        <div class="col-md-1">
+          <img src="assets/img/cafe.png" width="70" height="60">
+        <p>Cafes</p>
+        </div>
+        <div class="col-md-1">
+          <img src="assets/img/cafe.png" width="70" height="60">
+          <p>Desserts & Bakes</p>
+        </div>
+      </div><!--end of col-md-12-->
+    </div><!--end of row-->
+  <!-- </div> -->
+  <!--end of container-->
+
+  <!-- <div class="container-fluid"> -->
+    <div class="row">
+      <div class="col-md-12">
+          <h3> Popular localities in and around {{ cityname }}</h3>
+          <p>Explore restaurants, bars, and cafés by locality </p>
+      </div>
+      <!--end of col-md-12-->     
+    </div>
+    <!--end of row-->
+    <div class="row" id="place_list">
+      <div class="col-md-12">
+        <!-- <div class="col-md-4" *ngFor="let cityrestaurant of cityrestaurants">
+          <p-card class="card" title="{{ cityrestaurant.restaurant_name }}" [style]="{width: '360px',height:'250px'}">
+              <div><img src="{{ cityrestaurant.images }}" width="100px" height="100px" alt=""></div>
+              <div>{{ cityrestaurant.address }}</div>
+              <div>{{ cityrestaurant.serve_value }}</div>
+              <div>{{ cityrestaurant.cuisines.cuisine_name }}</div>
+              <div>{{ cityrestaurant.tags.tag }}</div>
+              <div>{{ cityrestaurant.payment }}</div>
+          </p-card>
+        </div> -->
+        <div class="col-md-4" *ngFor="let locality of citylocalities">
+            <p-card class="card" [style]="{width: '360px'}">
+                <a [routerLink]="['/localityrestaurant',locality]">{{ locality }}</a>
+            </p-card>
+        </div>
+      </div>
+      <!--end of col-md-12-->
+    </div>
+    <!--end of row-->
+  </div>
+  <!--end of container-->
+
+  <app-footer></app-footer>
