@@ -30,6 +30,7 @@ export class AddrestropageComponent implements OnInit {
   restaurants: any;
   restaurant_images: File;
   id:any;
+  restaurant_name: Promise<boolean>;
 
   constructor(private fb: FormBuilder,
     private userservice:UserService,
@@ -93,7 +94,8 @@ export class AddrestropageComponent implements OnInit {
       this.restaurantservice.addrestaurant(this.angForm.value)
       .subscribe((result_restro)=>{
         this.id=result_restro.id;
-        this.router.navigateByUrl('/upload/'+this.id);
+        this.restaurant_name=result_restro.restaurant_name;
+        this.router.navigateByUrl('/upload/'+this.restaurant_name+'/'+this.id);
         this.toasterService.successToaster(result_restro.success.str1, result_restro.success.str2)
       })
     }

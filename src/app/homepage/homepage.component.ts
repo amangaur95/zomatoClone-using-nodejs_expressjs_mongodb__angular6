@@ -22,7 +22,6 @@ export class HomepageComponent implements OnInit {
   getnewRestaurant(page){
     this.restaurantdetails.getnewRestaurant(page)
     .subscribe((result_restrodetails)=>{
-      // console.log(result_restrodetails,"from home page component");
       this.restaurants=result_restrodetails.restro_details;
       this.totalRecords=result_restrodetails.count;
       this.perPageRecords=result_restrodetails.perPage;

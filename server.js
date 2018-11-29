@@ -16,7 +16,7 @@ const search = require('./routes/search.route');
 const restaurantadmin = require('./routes/restaurantadmin.route');
 const menu = require('./routes/menu.route');
 const addtocart = require('./routes/addtocart.route');
-const eamilverify = require('./routes/emailverify.route');
+const emailverify = require('./routes/emailverify.route');
 const forgotpassword = require('./routes/forgotpassword.route');
 const resetpassword = require('./routes/resetpassword.route');
 
@@ -60,9 +60,11 @@ app.use('/search',search);
 app.use('/restaurantadmin',restaurantadmin);
 app.use('/menu',menu);
 app.use('/addtocart',addtocart);
-app.use('/verify', eamilverify);
+app.use('/verify', emailverify);
 app.use('/forgotpassword', forgotpassword);
 app.use('/resetpassword', resetpassword);
+app.use('/defaultcardtoken', stripepayment)
+app.use('/getcardinfo', stripepayment);
 
 app.listen(PORT, function(){
    console.log('Server is running on Port',PORT);

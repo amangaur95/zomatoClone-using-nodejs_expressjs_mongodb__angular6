@@ -11,8 +11,12 @@ export class SearchService {
 
   constructor(private http:HttpClient) { }
 
-  search_restro(text):Observable<any>{
-    return this.http.post(`${this.uri}/searchrestro`,{'val' : text})
+  search_restro(text,cityname):Observable<any>{
+    const obj = {
+      text:text,
+      cityname:cityname
+    }
+    return this.http.post(`${this.uri}/searchrestro`, obj)
   }
 
   matchLocation(searchLocation) : Observable<any>{

@@ -1,3 +1,9 @@
+<div *ngIf="quantitycountZer0=='1'" class="alert alert-danger">
+  Item count can not be less than zero
+</div>
+<div *ngIf="quantitycountMax=='1'" class="alert alert-info">
+  Item quantity couldnot exceed 5
+</div>
  <table class="table table-bordered">
    <thead>
      <tr>
@@ -20,13 +26,16 @@
    <tfoot>
     <tr>
       <td>Total Price</td>
-      <td colspan="6" class="text-right">{{total | currency: 'INR' }}
-        <app-paymentpage payment="{{total}}"></app-paymentpage>
-          <!-- <a routerLink="/pay">Proceed to Pay</a> -->
+      <td colspan="6" class="text-right">{{ total | currency: 'INR' }}
+        <!-- <app-paymentpage payment="{{total}}"></app-paymentpage>   -->
+        <!-- <a routerLink="/pay">Proceed to Pay</a> -->
+        <button class="btn btn-primary" (click)="proceedPay(total)">Payment</button>
       </td>
     </tr>
   </tfoot>
  </table>
+ <!-- <button class="btn btn-danger" (click)="payament(total)">Pay</button> -->
+ <!-- <app-paymentpage payment="{{total}}"></app-paymentpage> -->
  
 
  <!-- <div *ngFor="let menu of cartitems">

@@ -14,79 +14,71 @@ export class UploadComponent implements OnInit {
   angForm: FormGroup;
   id: any;
   menuCount:number = 1;
-// selectedFile = null;
+  itemUploadCount:number = 0;
+  restaurantname: any;
 
-//   constructor(private http: HttpClient) {
-//    }
-//    onFileSelected(event){
-//     //  console.log(event);
-//     this.selectedFile = event.target.files[0];
-//    }
-//    onUpload(){
-
-//    }
   constructor(private fb:FormBuilder,
     private menuservice:MenuService,
     private activatedroute:ActivatedRoute,
     private router:Router,
     private toasterService:ToasterService){
-     
       this.activatedroute.params.subscribe(params => {
         this.id = params['id'];
+        this.restaurantname = params['restaurantname'];
         this.createForm();
-        // console.log(this.id); 
     });
-
-     console.log(this.angForm.value);
   }
-  
+
+  ngOnInit() {
+    const control = <FormArray>this.angForm.controls['more_item'];
+    control.push(this.createItem());
+  }
+
   createForm(){
     this.angForm = this.fb.group({
-      food_name: ['', Validators.required ],
-      food_price: ['', Validators.required ],
-      food_services: ['', Validators.required],
-      food_desc: [''],
-      restaurant_id:this.id,
+      // food_name: ['', Validators.required ],
+      // food_price: ['', Validators.required ],
       // food_services: ['', Validators.required],
-      // items: this.fb.array([
-      //   this.createItem(),
-      //   ])
+      // food_desc: [''],
+      restaurant_id:this.id,
+      more_item: this.fb.array([])
     })
   }
-  // createItem(){
-  //   return this.fb.group({
-  //     food_name: ['', Validators.required ],
-  //     food_price: ['', Validators.required ],
-  //     food_desc: [''],
-  //   })
-  // }
 
-  // addItem() {
-  //   const control = <FormArray>this.angForm.controls['items'];
-  //   control.push(this.createItem());
-  //   }
-
-  // removeItem(i: number) {
-  //   const control = <FormArray>this.angForm.controls['items'];
-  //   control.removeAt(i);
-  // }
-  ngOnInit() {
+  createItem(){
+    return this.fb.group({
+      morefood_name: ['', Validators.required ],
+      morefood_price: ['', Validators.required ],
+      morefood_services: ['', Validators.required],
+      morefood_desc: [''],
+    });
   }
   
+  deleteItem(index: number){
+    if(this.itemUploadCount>0){
+      const control = <FormArray>this.angForm.controls['more_item'];
+      control.removeAt(index);   // remove the chosen row
+      this.itemUploadCount -= 1;
+    }
+  }
 
+  addMoreItem(){
+    const control = <FormArray>this.angForm.controls['more_item'];
+    control.push(this.createItem());
+    this.itemUploadCount += 1;
+  }
+ 
   addmenu(){
-    // console.log(this.angForm.value);
     if(localStorage.getItem('user_id') && localStorage.getItem('token')){
-    this.menuservice.addmenu(this.angForm.value)
-    .subscribe((result_addmenures)=>{
-      // console.log(result_addmenures)
-      // this.router.navigateByUrl("/viewmenupage");
+      this.menuservice.addmenu(this.angForm.value)
+      .subscribe((result_addmenures)=>{
+      this.router.navigateByUrl("/viewmenupage/"+this.restaurantname+'/'+this.id);
       this.toasterService.successToaster(result_addmenures.success.str1, result_addmenures.success.str2)
     },
     (err)=>{
       console.log(err);
     })
-  }
+    }
   }
 
   addSellingPoint(){

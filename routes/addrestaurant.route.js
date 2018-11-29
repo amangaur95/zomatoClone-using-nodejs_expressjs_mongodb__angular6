@@ -37,7 +37,8 @@ router.post('/newrestaurant', function (req, res) {
           str1: 'Your Restaurant has been created',
           str2: 'You Can See Your Restaurant on Our Restaurant List'
         },
-        id: result_restro.id
+        id: result_restro.id,
+        restaurant_name: result_restro.restaurant_name
       });
     }).catch(error => {
       res.json({

@@ -14,20 +14,22 @@ export class FoodlistPriceComponent implements OnInit {
   food_services: any;
   arrayData:any=[];
   itemcount: number = 0;
+  restroname: any;
 
   constructor(private menuservice:MenuService,
     private addcartservice:AddtocartService,
     private activatedroute:ActivatedRoute) {
       this.activatedroute.params.subscribe(params=>{
+        this.restroname=params.restaurantname;
         this.id=params['id'];
       })
-     }
+    }
 
   ngOnInit() {
+    
     this.menuservice.getMenu(this.id)
     .subscribe((result_menulist)=>{
       this.menulists=result_menulist.menu_list;
-      console.log(result_menulist);
     },
     (err)=>{
       console.log(err);
@@ -35,9 +37,8 @@ export class FoodlistPriceComponent implements OnInit {
 
     this.addcartservice.getCart(localStorage.getItem('user_id'))
     .subscribe((result_menulist)=>{
-      console.log(result_menulist);
-      // this.itemcount=result_menulist.cartitem.length;
-    //  const items = result_menulist.menu_list[0].items
+      this.itemcount=result_menulist.cartitem.length;
+      // const items = result_menulist.menu_list[0].items
      
     //  items.map(item => item._id)
     //  .filter((value, index, self) => self.indexOf(value) === index)
@@ -47,11 +48,11 @@ export class FoodlistPriceComponent implements OnInit {
 
 
     //  items.map(x =>{
-    //   this.itemcout++;
+    //   this.itemcount++;
     //  })
-    // },
-    // (err)=>{
-    //   console.log(err);
+    },
+    (err)=>{
+      console.log(err);
     })
   }
 

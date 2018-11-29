@@ -21,12 +21,9 @@ router.get('/verify/:id', function(req,res){
             }
             else{
                 if(user.isDeleted==false && user.clickStatus==0){
-                    User.findByIdAndUpdate({_id:user._id},
-                        {$set:{
-                            isVerified:true,
-                            clickStatus:1,
-                        }
-                    }).exec(function(err,updated){
+                    user.isVerified=true,
+                    user.clickStatus=1,
+                    user.save(function(err,saved){
                         if(err){
                             res.json({
                                 err:err,
@@ -45,6 +42,30 @@ router.get('/verify/:id', function(req,res){
                             })
                         }
                     })
+                    // User.findByIdAndUpdate({_id:user._id},
+                    //     {$set:{
+                    //         isVerified:true,
+                    //         clickStatus:1,
+                    //     }
+                    // }).exec(function(err,updated){
+                    //     if(err){
+                    //         res.json({
+                    //             err:err,
+                    //             success:false,
+                    //             failuremessage:{msg1:'Unable to verify email',msg2:'Something went wrong'}
+                    //         })
+                    //     }
+                    //     else{
+                    //         res.json({
+                    //             code:200,
+                    //             success:true,
+                    //             successverification:{
+                    //                 msg1:'Your email is verified successfully',
+                    //                 msg2:'You can Login Now'
+                    //             }
+                    //         })
+                    //     }
+                    // })
                 }
                 else{
                     res.json({linkexpiremsg:{msg1:"Link expired",msg2:"Try new verification link"}});

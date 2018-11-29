@@ -181,3 +181,24 @@
   <!--end of container-->
 
   <app-footer></app-footer>
+
+  <p-dialog header="Found Match" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+      [maximizable]="true" [baseZIndex]="10000">
+        <table class="table-bordered">
+          <thead class="tablehead">
+            <tr>
+              <td>Restaurant Locality</td>
+              <td>Restaurant Name</td>
+            </tr>
+          </thead>
+          <tbody class="tablebody">
+            <tr *ngFor="let location of restro">
+              <td>{{ location.restaurant_locality }}</td>
+              <td><a [routerLink]="['/foodlist',location.restaurant_name,location._id]">{{ location.restaurant_name }}</a></td>
+            </tr>
+          </tbody>  
+        </table>
+    <p-footer>
+      <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Close" class="ui-button-secondary"></button>
+    </p-footer>
+  </p-dialog>

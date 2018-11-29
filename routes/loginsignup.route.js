@@ -57,14 +57,18 @@ router.post('/signup', function(req, res) {
             const transporter = nodemailer.createTransport({
               service: 'Gmail',
               auth: {
-                user: '  ', // enter your gmail_id here
-                pass: '  ' //enter your gmail password here
+                user: ' ', // Enter your email id(gmail id)
+                pass: ' ' // Enter your gmail password
               }
-            }); 
-            host="localhost:4200"
+            });
+            
+            // rand=Math.floor((Math.random() * 100) + 54);
+            
+            // host=req.get('host'); //if we using localhost 4000 then this   
+            host="localhost:4200" //otherwise this
             verificationlink="http://"+host+"/emailverify/"+randomToken;
             const mailOptions = {
-              from: '  ', //your email id here
+              from: ' ', // Enter your email id(gmail id)
               to:email,
               subject: 'Please confirm account',
               text: 'Hello,<br> Please Click on the link to verify your email.<br><a href='+verificationlink+'>Click here to verify</a><br>This link is expire after a single click',
@@ -89,7 +93,7 @@ router.post('/signup', function(req, res) {
             
     }
   });
-
+  
   router.post('/signin', function(req, res) {
     User.findOne({
       email: req.body.email

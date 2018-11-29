@@ -38,16 +38,23 @@ public error:string;
   }
 
   public submit(){
-    this.loginsignupservice.login(this.angForm.value)
-    .pipe(first())
-    .subscribe((result_loginstatus)=>{
-      if(result_loginstatus==true){
-        this.router.navigateByUrl(this.returnUrl);
-      }
-    },
-    (err)=>{
-      console.log(err);
-    })
+    if(this.angForm.valid){
+      this.loginsignupservice.login(this.angForm.value)
+      .pipe(first())
+      .subscribe((result_loginstatus)=>{
+        if(result_loginstatus==true){
+          this.router.navigateByUrl(this.returnUrl);
+        }
+      },
+      (err)=>{
+        console.log(err);
+      })
+    }
+    else{
+      Object.keys(this.angForm.controls).forEach((formControl: any) => {
+        this.angForm.controls[formControl].markAsDirty()
+      })
+    }
   }
 
 showSuccess() {
@@ -57,7 +64,6 @@ showSuccess() {
   ngOnInit() {
     this.userservice.logout();
     this.returnUrl = this.activateRoute.snapshot.queryParams['returnUrl'] || '/';
-   
   }
 
 }

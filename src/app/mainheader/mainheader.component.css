@@ -41,3 +41,23 @@ span{
     background: red;
     color: white
 }
+.header ul li{
+    list-style: none;
+    display: inline-block
+}
+.typecity_error{
+    color:red;
+}
+.tablehead tr td{
+    font-weight: bold;
+}
+.tablebody tr td{
+    font-weight: bold;
+    color:green
+}
+.tablebody tr td a{
+    text-decoration: none;
+}
+.tablebody tr td a:hover{
+    background-color:rgb(7, 204, 7);
+}

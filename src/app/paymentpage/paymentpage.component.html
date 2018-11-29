@@ -1,8 +1,72 @@
-<form [formGroup]="payform" (submit)="chargeCreditCard()">
+<button (click)="openCheckout()">Purchase</button>
+
+<!-- <form [formGroup]="payform" (submit)="chargeCreditCard()">
   <input type="text" placeholder="email" name="email" formControlName="email">
     <input type="text" placeholder="Credit Card #" name="cardNumber" formControlName="cardNumber">
     <input type="text" placeholder="Expiration Month" name="expMonth" formControlName="expMonth">
     <input type="text" placeholder="Expiration Year" name="expYear" formControlName="expYear">
     <input type="text" placeholder="CVC" name="cvc" formControlName="cvc">
     <button class="btn btn-info">Proceed for payment</button>
-</form>
+</form> -->
+
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="upper_box">
+        <div class="form-group">
+          <h2 class="alert alert-info">You have to pay{{ price | currency: 'INR' }}</h2>
+        </div>
+        <div class="form-group">
+          <h4 class="alert alert-danger">Note : Please do not click on refresh button</h4>
+        </div>
+      </div>
+      <div class="box">
+        <form [formGroup]="payform" (submit)="chargeCreditCard()">
+          <div class="form-group">
+            <label class="col-md-4">Email</label>
+            <input type="text" class="form-control" placeholder="email" name="email" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Card Number</label>
+            <input type="text"  class="form-control" pInputText pKeyFilter="num" onKeyPress="if(this.value.length==16) return false;" placeholder="Credit Card #" name="cardNumber" formControlName="cardNumber">
+          </div>
+          <div *ngIf="payform.controls['cardNumber'].hasError('minlength')">
+            Should be minimum of 16 number
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Expiry Month</label>
+            <input type="text" class="form-control" pInputText pKeyFilter="num" onKeyPress="if(this.value.length==2) return false;" placeholder="Expiration Month" name="expMonth" formControlName="expMonth" onKeyPress="if(this.value.length==2) return false;">
+          </div>
+          <div *ngIf="payform.controls['expMonth'].hasError('minlength')">
+            Should be minimum of 2 number
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Expiry Year</label>
+            <input type="text" class="form-control" pInputText pKeyFilter="num" onKeyPress="if(this.value.length==4) return false;" placeholder="Expiration Year" name="expYear" formControlName="expYear">
+          </div>
+          <div *ngIf="payform.controls['expYear'].hasError('minlength')">
+            Should be minimum of 2 number
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">CVC</label>
+            <input type="text" class="form-control" pInputText pKeyFilter="num" onKeyPress="if(this.value.length==4) return false;" placeholder="CVC" name="cvc" formControlName="cvc">
+          </div>
+          <div *ngIf="payform.controls['cvc'].hasError('minlength')">
+            Should be minimum of 3 number
+          </div>
+          <div class="form-group">
+            <button class="btn btn-info">Proceed for payment</button>
+          </div>            
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <form [formGroup]="angForm" (submit)="card">
+  <button type="submit" class="btn btn-info" >Purchase</button>
+</form> -->

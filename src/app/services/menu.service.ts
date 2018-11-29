@@ -27,8 +27,12 @@ export class MenuService {
     return this.http.get(`${this.uri}/editfooditem/${id}`)
   }
 
-  deleteMenuItem(id): Observable<any>{
-    return this.http.get(`${this.uri}/deletemenuitem/${id}`)
+  deleteMenuItem(menu_id,id): Observable<any>{
+    const obj={
+      menu_id:menu_id,
+      id:id
+    }
+    return this.http.post(`${this.uri}/deletemenuitem`,obj)
   }
   
 }

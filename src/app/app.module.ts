@@ -60,6 +60,7 @@ import { SearchService } from './services/search.service';
 import { EmailverifyComponent } from './emailverify/emailverify.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -121,7 +122,8 @@ export function tokenGetter(){
     CardModule,
     FileUploadModule,
     PaginatorModule,
-    NgxUploaderModule
+    NgxUploaderModule,
+    KeyFilterModule
   ],
   providers: [ UserService, 
     ToasterService, 

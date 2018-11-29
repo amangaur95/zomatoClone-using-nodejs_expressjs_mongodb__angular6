@@ -37,11 +37,9 @@ export class OrderfoodonlineComponent implements OnInit {
   getCuisine() {
     this.restaurantdetail.getCuisine()
       .subscribe((data) => {
-        // console.log("ttt", data);
         this.cuisine = data;
         this.CuisinelistComponent.getCuisinelist(this.cuisine);
         this.cuisineviewDialoge = true;
-
       },
       (err)=>{
         this.error='Could not find list'

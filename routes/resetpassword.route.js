@@ -21,12 +21,9 @@ router.post('/resetpassword', function(req,res){
                 }
                 else{
                     if(user.resetPasswordExpires==0){
-                        User.findByIdAndUpdate({_id:user._id},
-                            {$set:{
-                                password:req.body.details.password,
-                                resetPasswordExpires:1,
-                            }
-                        }).exec(function(err,updated){
+                        user. password=req.body.details.password,
+                        user.resetPasswordExpires=1,
+                        user.save(function(err,saved){
                             if(err){
                                 res.json({
                                     err:err,
@@ -42,6 +39,27 @@ router.post('/resetpassword', function(req,res){
                                 })
                             }
                         })
+                        // User.findByIdAndUpdate({_id:user._id},
+                        //     {$set:{
+                        //         password:req.body.details.password,
+                        //         resetPasswordExpires:1,
+                        //     }
+                        // }).exec(function(err,updated){
+                        //     if(err){
+                        //         res.json({
+                        //             err:err,
+                        //             success:false,
+                        //             failuremessage:{msg1:'Unable to reset password',msg2:'Something went wrong'}
+                        //         })
+                        //     }
+                        //     else{
+                        //         res.json({
+                        //             code:200,
+                        //             success:true,
+                        //             successmessage:{msg1:'Password Reset Successfully',msg2:'You can Login Now'}
+                        //         })
+                        //     }
+                        // })
                     }
                     else{
                         return res.json({

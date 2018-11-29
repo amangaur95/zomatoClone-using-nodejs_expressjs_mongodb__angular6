@@ -123,7 +123,7 @@
                 <p>{{ locality_restaurant.cuisines.cuisine_name }}</p>
                 <p>{{ locality_restaurant.tags.tag }}</p>
                 <p>{{ locality_restaurant.payment }}</p>
-                <button class="form-control orderfood" [routerLink]="['/foodlist',locality_restaurant._id]">OrderFood</button>
+                <button class="form-control orderfood" [routerLink]="['/foodlist',locality_restaurant.restaurant_name,locality_restaurant._id]">OrderFood</button>
             </p-card>
         </div>
       </div>

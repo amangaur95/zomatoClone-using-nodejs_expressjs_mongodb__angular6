@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="col-md-4" *ngFor="let newrestaurantlist of newrestaurantlists">
-        <p>{{ newrestaurantlist.restaurant_name }}</p>
+        <h2>{{ newrestaurantlist.restaurant_name | uppercase }}</h2>
         <p>{{ newrestaurantlist.owner_ornot }}</p>
         <p>{{ newrestaurantlist.owner_phone }}</p>
         <p>{{ newrestaurantlist.owner_email }}</p>
@@ -25,7 +25,7 @@
         <p>{{ newrestaurantlist.endTime.time }}</p>
         <!-- <p>{{ newrestaurantlist._id }} </p> -->
         <!-- <button class="btn btn-info">View Menu</button> -->
-        <button class="btn btn-info" [routerLink]="['/viewmenupage',newrestaurantlist._id]">ViewMenu</button>
+        <button class="btn btn-info" [routerLink]="['/viewmenupage',newrestaurantlist.restaurant_name,newrestaurantlist._id]">ViewMenu</button>
       </div>
     </div>
   </div>

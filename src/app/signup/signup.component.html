@@ -29,6 +29,9 @@
                 <div *ngIf="angForm.controls['email'].errors.required">
                   Email is required.
                 </div>
+                <div *ngIf="angForm.controls['email'].errors.email">
+                  Please Enter valid email.
+                </div>
               </div>
               <div class="form-group">
                 <label class="col-md-4">Password</label>
@@ -38,9 +41,16 @@
                 <div *ngIf="angForm.controls['password'].errors.required">
                   Password is required.
                 </div>
+                <div *ngIf="angForm.controls['password'].hasError('minlength')">
+                  Password should be minimum of 6 characters
+                </div>
+                <div *ngIf="angForm.controls['password'].hasError('maxlength')">
+                  Password should be maximum 15 characters.
+                </div>
               </div>
               <div class="form-group">
-                <button type="submit" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">SignUp</button>
+                <button type="submit" class="btn btn-primary">SignUp</button>
+                <!-- <button type="submit" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">SignUp</button> -->
               </div>
               <p id="have_account">Already Have an Account<a routerLink="/login"><span id="login_link">Login!!</span></a></p>
             </form>

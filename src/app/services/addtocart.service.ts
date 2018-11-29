@@ -18,7 +18,7 @@ export class AddtocartService {
   getCart(items) : Observable<any>{
     return this.http.get(`${this.uri}/getCart/${items}`)
   }
-  
+ 
   addcartItem(item_details,item_id) : Observable<any>{
     const obj={
       item_details:item_details,

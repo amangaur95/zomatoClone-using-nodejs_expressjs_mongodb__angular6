@@ -39,13 +39,13 @@ const routes: Routes = [
   { path:'productbusiness', component:ProductbusinessComponent },
   { path:'home', component:HomepageComponent },
   { path:'addrestaurant', component:AddrestropageComponent, canActivate: [AuthGuardService] },
-  { path:'upload/:id', component:UploadComponent, canActivate: [AuthGuardService] },
+  { path:'upload/:restaurantname/:id', component:UploadComponent, canActivate: [AuthGuardService] },
   { path:'citylocality/:city', component:CityrestaurantComponent },
   { path:'localityrestaurant/:locality', component:OrderfoodonlineComponent },
-  { path:'foodlist/:id', component:FoodlistPriceComponent, canActivate: [AuthGuardService] },
+  { path:'foodlist/:restaurantname/:id', component:FoodlistPriceComponent, canActivate: [AuthGuardService] },
   { path:'cartitem', component:AddcartComponent },
   { path:'pay', component:PaymentpageComponent },
-  { path:'viewmenupage/:id', component:RestaurantadminviewmenupageComponent, 
+  { path:'viewmenupage/:restaurantname/:id', component:RestaurantadminviewmenupageComponent, 
   canActivate: [AuthGuardService] },
   { path:'adminrestaurantviewpage', component:AdminviewrestaurantpageComponent, 
   canActivate: [AuthGuardService] },
@@ -53,8 +53,7 @@ const routes: Routes = [
   canActivate: [AuthGuardService] },
   { path:'emailverify/:id', component:EmailverifyComponent },
   { path:'forgotpassword', component:ForgotpasswordComponent },
-  { path:'passwordreset/:id', component:ResetpasswordComponent },
-  
+  { path:'passwordreset/:id', component:ResetpasswordComponent }
 ];
 @NgModule({
   imports: [

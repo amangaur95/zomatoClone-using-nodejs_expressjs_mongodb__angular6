@@ -1,7 +1,9 @@
 <!-- <h1>File Upload</h1>
 <input type="file" (change)="onFileSelected($event)">
 <button type="button" (click)="onUpload()">Upload</button> -->
-<div class="container">
+
+
+<!-- <div class="container">
 <form [formGroup]="angForm" novalidate (submit)="addmenu()">
     <div class="form-group">
         <label>Meal Plan<span>*</span></label>
@@ -54,4 +56,112 @@
         <button type="button" class="btn btn-primary" (click)="addSellingPoint()">Add Items</button>
     </div>
 </form>
+</div> -->
+
+
+<div class="container">
+    <form [formGroup]="angForm" novalidate (submit)="addmenu()">
+        <h2 class="alert alert-info">{{ restaurantname | uppercase }} Restaurant</h2>
+        <!-- <div class="form-group">
+            <label>Meal Plan<span>*</span></label>
+            <select class="form-control" formControlName="food_services" #food_services>
+                <option value="" selected disabled>Food and Beverage Services</option>
+                <option value="Starter">Starter</option>
+                <option value="Main Course">Main Course</option>
+                <option value="Dessert">Desserts</option>
+            </select>
+        </div>
+        <div *ngIf="angForm.controls['food_services'].invalid && (angForm.controls['food_services']
+            .dirty || angForm.controls['food_services'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['food_services'].errors.required">
+                Please Provide Meal Plan
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Food Name<span>*</span></label>
+            <input type="text" class="form-control" name="food_name" 
+                formControlName="food_name" #food_name/>
+        </div>
+        <div *ngIf="angForm.controls['food_name'].invalid && (angForm.controls['food_name']
+            .dirty || angForm.controls['food_name'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['food_name'].errors.required">
+                Please Provide Food Name 
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Food Price<span>*</span></label>
+            <input type="number" class="form-control" name="food_price" 
+                formControlName="food_price" #food_price/>
+        </div>
+        <div *ngIf="angForm.controls['food_price'].invalid && (angForm.controls['food_price']
+            .dirty || angForm.controls['food_price'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['food_price'].errors.required">
+                Please Provide Food Price 
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Food Description</label>
+            <input type="text" class="form-control" name="food_desc" 
+                formControlName="food_desc" #food_desc/>
+        </div>
+        <div class="row">
+            <div class="col-sm-6" style="color:blue">Add Items</div>
+            <div class="col-sm-6"><button type="button" class="fa fa-plus btn btn-link" style="color:blue" (click) = "addMoreItem()" ></button></div>
+        </div> -->
+        
+        <div formArrayName="more_item" *ngFor="let menu of angForm.get('more_item').controls; let i = index;">
+            <div [formGroupName]="i">
+                <div class="form-group">
+                    <label>Meal Plan<span>*</span></label>
+                    <select class="form-control" formControlName="morefood_services" #morefood_services>
+                        <option value="" selected disabled>Food and Beverage Services</option>
+                        <option value="Starter">Starter</option>
+                        <option value="Main Course">Main Course</option>
+                        <option value="Dessert">Desserts</option>
+                    </select>
+                </div>
+                <div *ngIf="morefood_services.invalid && (morefood_services.dirty || morefood_services.touched)" class="alert alert-danger">
+                    <div *ngIf="morefood_services.errors.required">
+                        Please Provide Meal Plan
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Food Name<span>*</span></label>
+                    <input type="text" class="form-control" name="morefood_name" 
+                        formControlName="morefood_name" #morefood_name/>
+                </div>
+                <div *ngIf="morefood_name.invalid && (morefood_name.dirty || morefood_name.touched)" class="alert alert-danger">
+                    <div *ngIf="morefood_name.errors.required">
+                        Please Provide Food Name 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Food Price<span>*</span></label>
+                    <input type="number" class="form-control" name="morefood_price" 
+                        formControlName="morefood_price" #morefood_price/>
+                </div>
+                <div *ngIf="morefood_price.invalid && (morefood_price.dirty || morefood_price.touched)" class="alert alert-danger">
+                    <div *ngIf="morefood_price.errors.required">
+                        Please Provide Food Price 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Food Description</label>
+                    <input type="text" class="form-control" name="morefood_desc" 
+                        formControlName="morefood_desc" #food_desc/>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" style="color:red">Delete Item</div>
+                    <div class="col-sm-6"><button type="button" class="fa fa-minus btn btn-link" style="color:red" (click) = "deleteItem(i)" ></button></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6" style="color:blue">Add Items</div>
+            <div class="col-sm-6"><button type="button" class="fa fa-plus btn btn-link" style="color:blue" (click) = "addMoreItem()" ></button></div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" [disabled]="angForm.pristine || angForm.invalid">Add Menu</button>
+        </div>
+    </form>
 </div>

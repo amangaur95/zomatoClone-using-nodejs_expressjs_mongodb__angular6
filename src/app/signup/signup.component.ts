@@ -25,34 +25,32 @@ export class SignupComponent implements OnInit {
     this.angForm = this.fb.group({
       name: ['', Validators.required ],
       username: ['', Validators.required ],
-      email: ['', Validators.required ],
-      password: ['', Validators.required ]
+      email: ['', Validators.compose([Validators.required, Validators.email]) ],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(15)]) ]
    });
   }
 
   addUser(){
-    this.loginsignupservice.addUser(this.angForm.value)
-    .subscribe((result)=>{
-      console.log(result);
-      if(result.code==200){
-        this.router.navigateByUrl('/login');
-        this.toasterService.successToaster(result.msg.str1, result.msg.str2)
-      }
-      else{
-        this.toasterService.errorToaster(result.msg.msg1,result.msg.msg2)
-      }
-    })
+    if(this.angForm.valid){
+      this.loginsignupservice.addUser(this.angForm.value)
+      .subscribe((result)=>{
+        console.log(result);
+        if(result.code==200){
+          this.router.navigateByUrl('/login');
+          this.toasterService.successToaster(result.msg.str1, result.msg.str2)
+        }
+        else{
+          this.toasterService.errorToaster(result.msg.msg1,result.msg.msg2)
+        }
+      })
+    }
+    else{
+      Object.keys(this.angForm.controls).forEach((formControl: any) => {
+        this.angForm.controls[formControl].markAsDirty()
+      })
+    }
   }
-
-  // addUser(){
-  //   this.userservice.addUser(this.angForm.value)
-  //   .subscribe((result)=>{
-  //     if(result.code==200){
-  //       this.router.navigateByUrl('/login');
-  //       this.toasterService.successToaster(result.success.str1, result.success.str2)
-  //     }
-  //   })
-  // }
+    
   ngOnInit() {
   }
 

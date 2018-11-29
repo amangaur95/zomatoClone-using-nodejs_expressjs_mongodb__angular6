@@ -14,6 +14,9 @@ export class MiddlecontentComponent implements OnInit {
   cityrestaurants: any;
   cityname: any;
   citylocalities: any;
+  display: boolean;
+  result_searchrestro: any;
+  restro: any;
 
   constructor(private searchservice:SearchService,
     private restaurantdetail : RestaurantdetailsService,
@@ -28,15 +31,17 @@ export class MiddlecontentComponent implements OnInit {
     this.restaurantdetail.getCityLocality(this.cityname)
     .subscribe((result_citylocality)=>{
       this.citylocalities=result_citylocality.citylocality;
-      console.log(this.citylocalities)
     })
-
   }
  
   search(text){
-    this.searchservice.search_restro(text)
+    this.searchservice.search_restro(text,this.cityname)
     .subscribe((result_searchrestro)=>{
-      console.log(result_searchrestro);
+      this.result_searchrestro=result_searchrestro;
+      this.restro=this.result_searchrestro.result_restro;
+      if(this.result_searchrestro.code==200){
+        this.display=true;
+      }
     },
     (err)=>{
       console.log(err);

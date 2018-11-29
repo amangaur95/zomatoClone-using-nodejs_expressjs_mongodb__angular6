@@ -1,5 +1,14 @@
 <div class="container-fluid uppercontainer">
+    <!-- <div class="header">
+        <ul>
+            <li><a href="#" id="order_food">Order Food</a></li>
+            <li><a routerLink="/cartitem"><span class="glyphicon glyphicon-shopping-cart"></span>  Items</a><span *ngIf='itemcount'>{{itemcount}}</span></li>
+        </ul>
+    </div> -->
     <div class="row">
+        <!-- <i class="fa fa-shopping-cart fa-5x"></i>
+        <i class="fa fa-address-book" aria-hidden="true"></i> -->
+
         <a id="productbusiness" routerLink="/productbusiness">Products for Businesses</a>
     </div><!--end of row-->
       <!-- <div class="row">
@@ -26,6 +35,33 @@
           <!-- <button class="btn btn-danger my-2 my-sm-0" type="submit" routerLink="/orderfoodonline">Find Food</button> -->
           <button class="btn btn-danger my-2 my-sm-0" (click)="matchLocation(searchLocation)">Find Food</button>
         </form>
+        <div class="typecity_error" *ngIf="enterSomething==true">
+          Please type Your City or Locality
+        </div>
+        <div class="typecity_error" *ngIf="notFound_msg">
+          {{ notFound_msg }}
+        </div>
       </div><!--end of col-md-12-->
     </div>   
   </div><!--end of container-fluid-->
+  
+  <p-dialog header="Found Match" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
+      [maximizable]="true" [baseZIndex]="10000">
+        <table class="table-bordered">
+          <thead class="tablehead">
+            <tr>
+              <td>Restaurant Locality</td>
+              <td>Restaurant Name</td>
+            </tr>
+          </thead>
+          <tbody class="tablebody">
+            <tr *ngFor="let location of matchresult">
+              <td>{{ location.restaurant_locality }}</td>
+              <td><a [routerLink]="['/foodlist',location.restaurant_name,location._id]">{{ location.restaurant_name }}</a></td>
+            </tr>
+          </tbody>  
+        </table>
+    <p-footer>
+      <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Close" class="ui-button-secondary"></button>
+    </p-footer>
+  </p-dialog>

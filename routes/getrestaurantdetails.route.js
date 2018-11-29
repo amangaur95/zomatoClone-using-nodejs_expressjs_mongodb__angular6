@@ -9,6 +9,7 @@ const Timing = require('../models/timing.model');
 router.get('/newrestaurant/:page', function (req, res) {
   let perPage =  9
   let page = req.params.page || 1
+  
   Newrestaurant.find({})
     .skip((perPage * page) - perPage)
     .limit(perPage)
@@ -91,7 +92,12 @@ router.get('/timing', function (req, res) {
 router.get('/newcity/:page', function (req, res) {
   let perPage = 9
   let page =req.params.page || 1
-  Newrestaurant.aggregate([{$group:{_id:'$city'}}, {$skip:((perPage * page) - perPage)}, {$limit:perPage}])   
+  Newrestaurant.aggregate([{$group:{_id:  { $toUpper: "$city" }}}, {$skip:((perPage * page) - perPage)}, {$limit:perPage}])
+  // Newrestaurant.aggregate([{$group:{_id:'$city'}}, {$skip:((perPage * page) - perPage)}, {$limit:perPage}])
+    // Newrestaurant.find({})
+    // .skip((perPage * page) - perPage)
+      // .limit(perPage)
+      // .distinct("city")      
       .exec(function (err, newcity) {
         if(err){
           res.json({
@@ -123,7 +129,7 @@ router.get('/newcity/:page', function (req, res) {
 
   router.post('/citylocality', function (req, res) {
     Newrestaurant.find({
-        city: req.body.city
+      city: {"$regex": "^" + req.body.city + "\\b", "$options": "i"}
       })
       .distinct("restaurant_locality")
       .exec(function (err, citylocality) {
