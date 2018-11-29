@@ -86,7 +86,7 @@ export class PaymentpageComponent implements OnInit {
     var tok=this;
     var handler = (<any>window).StripeCheckout.configure({
 
-      key: 'pk_test_nulgy2BmiqgQp1OBSePOzc4G',
+      key: ' ', // Enter your publishable key here
       locale: 'auto',
       email: tok.email,
       // token: tok.fingerprint
